@@ -14,13 +14,13 @@ public class Lancamento {
 
     private String data;
     private Double valor;
-    private Enum<TipoLancamento> tipoLancamento;
+    private TipoLancamento tipoLancamento;
     private String descricao;
 
     public Lancamento() {
     }
 
-    public Lancamento(Long idLancamento, String data, Double valor, Enum<TipoLancamento> tipoLancamento, String descricao) {
+    public Lancamento(Long idLancamento, String data, Double valor, TipoLancamento tipoLancamento, String descricao) {
         this.idLancamento = idLancamento;
         this.data = data;
         this.valor = valor;
@@ -28,7 +28,7 @@ public class Lancamento {
         this.descricao = descricao;
     }
 
-    public Lancamento(String data, Double valor, Enum<TipoLancamento> tipoLancamento, String descricao) {
+    public Lancamento(String data, Double valor, TipoLancamento tipoLancamento, String descricao) {
         this.data = data;
         this.valor = valor;
         this.tipoLancamento = tipoLancamento;
@@ -55,11 +55,11 @@ public class Lancamento {
         this.valor = valor;
     }
 
-    public Enum<TipoLancamento> getTipoLancamento() {
+    public TipoLancamento getTipoLancamento() {
         return tipoLancamento;
     }
 
-    public void setTipoLancamento(Enum<TipoLancamento> tipoLancamento) {
+    public void setTipoLancamento(TipoLancamento tipoLancamento) {
         this.tipoLancamento = tipoLancamento;
     }
 

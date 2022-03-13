@@ -8,7 +8,7 @@ public class LancamentoDto {
     private Long idLancamento;
     private String data;
     private Double valor;
-    private Enum<TipoLancamento> tipoLancamento;
+    private TipoLancamento tipoLancamento;
     private String descricao;
 
     public LancamentoDto() {
@@ -22,7 +22,7 @@ public class LancamentoDto {
         descricao = lancamento.getDescricao();
     }
 
-    public LancamentoDto(Long idLancamento, String data, Double valor, Enum<TipoLancamento> tipoLancamento, String descricao) {
+    public LancamentoDto(Long idLancamento, String data, Double valor, TipoLancamento tipoLancamento, String descricao) {
         this.idLancamento = idLancamento;
         this.data = data;
         this.valor = valor;
@@ -42,7 +42,7 @@ public class LancamentoDto {
         return valor;
     }
 
-    public Enum<TipoLancamento> getTipoLancamento() {
+    public TipoLancamento getTipoLancamento() {
         return tipoLancamento;
     }
 
