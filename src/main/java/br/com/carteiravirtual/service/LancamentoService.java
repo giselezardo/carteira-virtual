@@ -3,6 +3,7 @@ package br.com.carteiravirtual.service;
 import br.com.carteiravirtual.controller.dto.LancamentoDto;
 import br.com.carteiravirtual.controller.form.LancamentoForm;
 import br.com.carteiravirtual.model.Lancamento;
+import br.com.carteiravirtual.repository.CategoriaRepository;
 import br.com.carteiravirtual.repository.LancamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,11 @@ public class LancamentoService {
     @Autowired
     private LancamentoRepository lancamentoRepository;
 
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
     public LancamentoDto salvarLancamento(LancamentoForm form) throws ParseException {
-        Lancamento lancamento = form.converter(lancamentoRepository);
+        Lancamento lancamento = form.converter(lancamentoRepository, categoriaRepository);
         lancamento.setData(converterData(lancamento));
         Lancamento lancamentoSalvo = lancamentoRepository.save(lancamento);
         return new LancamentoDto(lancamentoSalvo);

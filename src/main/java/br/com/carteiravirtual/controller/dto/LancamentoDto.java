@@ -10,6 +10,7 @@ public class LancamentoDto {
     private Double valor;
     private TipoLancamento tipoLancamento;
     private String descricao;
+    private Integer idCategoria;
 
     public LancamentoDto() {
     }
@@ -20,14 +21,16 @@ public class LancamentoDto {
         valor = lancamento.getValor();
         tipoLancamento = lancamento.getTipoLancamento();
         descricao = lancamento.getDescricao();
+        idCategoria = lancamento.getCategoria().getIdCategoria();
     }
 
-    public LancamentoDto(Long idLancamento, String data, Double valor, TipoLancamento tipoLancamento, String descricao) {
+    public LancamentoDto(Long idLancamento, String data, Double valor, TipoLancamento tipoLancamento, String descricao, Integer idCategoria) {
         this.idLancamento = idLancamento;
         this.data = data;
         this.valor = valor;
         this.tipoLancamento = tipoLancamento;
         this.descricao = descricao;
+        this.idCategoria = idCategoria;
     }
 
     public Long getIdLancamento() {
@@ -48,5 +51,9 @@ public class LancamentoDto {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public Integer getIdCategoria() {
+        return idCategoria;
     }
 }

@@ -1,9 +1,6 @@
 package br.com.carteiravirtual.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "lançamentos")
 public class Lancamento {
@@ -17,22 +14,28 @@ public class Lancamento {
     private TipoLancamento tipoLancamento;
     private String descricao;
 
+    @ManyToOne
+    @JoinColumn(name = "ID_CATEGORIA")
+    private Categoria categoria;
+
     public Lancamento() {
     }
 
-    public Lancamento(Long idLancamento, String data, Double valor, TipoLancamento tipoLancamento, String descricao) {
+    public Lancamento(Long idLancamento, String data, Double valor, TipoLancamento tipoLancamento, String descricao, Categoria categoria) {
         this.idLancamento = idLancamento;
         this.data = data;
         this.valor = valor;
         this.tipoLancamento = tipoLancamento;
         this.descricao = descricao;
+        this.categoria = categoria;
     }
 
-    public Lancamento(String data, Double valor, TipoLancamento tipoLancamento, String descricao) {
+    public Lancamento(String data, Double valor, TipoLancamento tipoLancamento, String descricao, Categoria categoria) {
         this.data = data;
         this.valor = valor;
         this.tipoLancamento = tipoLancamento;
         this.descricao = descricao;
+        this.categoria = categoria;
     }
 
     public Long getIdLancamento() {
@@ -69,5 +72,17 @@ public class Lancamento {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public void setIdLancamento(Long idLancamento) {
+        this.idLancamento = idLancamento;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
