@@ -2,6 +2,7 @@ package br.com.carteiravirtual.service;
 
 import br.com.carteiravirtual.controller.dto.LancamentoDto;
 import br.com.carteiravirtual.controller.form.LancamentoForm;
+import br.com.carteiravirtual.model.Categoria;
 import br.com.carteiravirtual.model.Lancamento;
 import br.com.carteiravirtual.repository.CategoriaRepository;
 import br.com.carteiravirtual.repository.LancamentoRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,5 +44,10 @@ public class LancamentoService {
 
     public void deletarLancamento(Long id) {
         lancamentoRepository.deleteById(id);
+    }
+
+    public List<LancamentoDto> buscarPorCategoria(Optional<Categoria> categoria) {
+        List<Lancamento> lancamentosPorCategoria = lancamentoRepository.findByCategoria(categoria);
+        return LancamentoDto.converterListaParaDto(lancamentosPorCategoria);
     }
 }

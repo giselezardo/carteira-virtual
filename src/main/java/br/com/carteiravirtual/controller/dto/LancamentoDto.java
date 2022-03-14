@@ -3,6 +3,9 @@ package br.com.carteiravirtual.controller.dto;
 import br.com.carteiravirtual.model.Lancamento;
 import br.com.carteiravirtual.model.TipoLancamento;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class LancamentoDto {
 
     private Long idLancamento;
@@ -31,6 +34,10 @@ public class LancamentoDto {
         this.tipoLancamento = tipoLancamento;
         this.descricao = descricao;
         this.idCategoria = idCategoria;
+    }
+
+    public static List<LancamentoDto> converterListaParaDto(List<Lancamento> lancamentos) {
+        return lancamentos.stream().map(LancamentoDto::new).collect(Collectors.toList());
     }
 
     public Long getIdLancamento() {
